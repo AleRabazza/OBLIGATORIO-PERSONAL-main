@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <title>Rabazzatransports</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" rel="stylesheet">
+    <script src="scripts/index.js"></script>
+    <link rel="stylesheet" href="styles/index.css">
+    <link href="https://getdatepicker.com/4/">
+</head>
+<header class="container-fluid mb-4">
+    <ul class="d-flex flex-row list-unstyled">
+      <li class="pt-3 pl-1 fs-3 flex-start">
+        <img src="images/Rabazza transport1.png" alt="Rabazza transports">
+      </li>
+    </ul>
+</header>
+
+<main>
+<section>
+  <table>
+    <th>
+    <section class="container-lg">
+      <div class="margin-tb-lg">
+          <legend id="leyendaFormulario">Agregar camion</legend>
+          <input class="form-control" type="hidden" id="camion" name="idCamion" value="0" />
+          <table>
+            <th>
+          <div>
+            <label for="patente">Ingrese la patente:</label>
+            <input class="form-control" type="text" id="patente" name="patente" />
+          </div>
+          <div>
+            <label for="marca">Ingrese la marca:</label>
+            <input class="form-control" type="text" id="marca" name="marca" />
+          </div>
+          <div>
+            <label for="modelo">Ingrese el modelo:</label>
+            <input class="form-control" type="text" id="modelo" name="modelo" />
+          </div>
+          <div>
+            <label for="anoFabricacion">Ingrese el ano de fabricacion:</label>
+            <input class="form-control" type="number" id="anoFabricacion" name="anoFabricacion" />
+          </div>
+          <div>
+            <label for="costoKM">Ingrese el costo por kilometo en $:</label>
+            <input class="form-control" type="number" id="costoKM" name="costoKM" />
+          </div>
+          <div>
+            <label for="capacidadk">Ingrese la capacidad de kilos:</label>
+            <input class="form-control" type="number" id="capacidadk" name="capacidadk" />
+          </div>
+          <div class="btn-group mt-3" role="group">
+            <button id="botonCancelar1" class="btn btn-secondary">
+              Cancelar
+            </button>
+            <button id="botonAgregar" class="btn btn-primary">
+              Guardar
+            </button>
+          </div>
+      </div>
+    </section>
+  </th>
+
+<th>
+     <section class="container-lg">
+       <div class="margin-tb-lg">
+         <legend id="leyendaFormulario">Agregar viaje de grano: </legend>
+         <input class="form-control" type="hidden" id="viajesGrano" name="idViajeGrano" value="0" />
+       <div>
+        <label for="patente2">Ingrese la patente del camion:</label>
+        <input class="form-control" type="text" id="patente2" name="patente2" />
+       </div>
+       <div>
+         <label for="kilometroGrano">Ingrese la cantidad de kilómetros recorridos:</label>
+         <input class="form-control" type="number" id="kilometroGrano" name="kilometroGrano" />
+       </div>
+       <div>
+         <label for="kilosGrano">Ingrese la cantidad de Kilos que llevo en el recorrido:</label>
+         <input class="form-control" type="number" id="kilosGrano" name="kilosGrano" />
+       </div>
+       </div>
+         <label for="fecha">Ingrese la fecha del vaije:</label>
+         <input type='date' class="form-control" id="fecha" name="fecha" />
+       </div>
+       <div class="btn-group mt-3" role="group">
+         <button id="botonCancelar2" class="btn btn-secondary">
+           Cancelar
+         </button>
+         <button id="botonIngresar2" class="btn btn-primary">
+           Ingresar
+         </button>
+       </div>
+       </div>
+    </section>
+  </th>
+  <th>
+  <section class="container-lg">
+    <div class="margin-tb-lg">
+        <legend id="leyendaFormulario">Agregar viaje de micropicado: </legend>
+        <input class="form-control" type="hidden" id="ViajesMicropicado" name="ViajesMicropicado" value="0" />
+      <div>
+        <label for="patente3">Ingrese la patente del camion:</label>
+        <input class="form-control" type="text" id="patente3" name="patente3" />
+      </div>
+      <div>
+        <label for="kilometroMicropicado">Ingrese la cantidad de kilómetros recorridos:</label>
+        <input class="form-control" type="number" id="kilometroMicropicado" name="kilometroMicropicado" />
+      </div>
+      <div>
+        <label for="cantViajesMicropicado">Cuantos viajes realizo de esta cantidad de Km::</label>
+        <input class="form-control" type="number" id="cantViajesMicropicado" name="cantViajesMicropicado" />
+      </div>
+        <label for="fecha2">Ingrese la fecha del vaije:</label>
+        <input type='date' class="form-control" id="fecha2" name="fecha2" />
+      </div>
+      <div class="btn-group mt-3" role="group">
+        <button id="botonCancelar3" class="btn btn-secondary">
+          Cancelar
+        </button>
+        <button id="botonIngresar3" class="btn btn-primary">
+          Ingresar
+        </button>
+      </div>
+  </div>
+ </section>
+ </th>
+ </table>
+
+
+ <section class="container-lg mt-5">
+  <h2>Lista de camiones</h2>
+  <table class="table table-striped align-middle table-hover table-bordered">
+    <thead>
+      <tr>
+        <th scope="col">Patente</th>
+        <th scope="col">Marca</th>
+        <th scope="col">Modelo</th>
+        <th scope="col">Año de fabricacion</th>
+        <th scope="col">Costo por kilometo</th>
+        <th scope="col">Capacidad de kilos</th>
+       
+      </tr>
+    </thead>
+    <tbody id="tablaCamiones"> </tbody>
+  </table>
+</section>
+
+<section class="container-lg mt-5">
+  <h2>Lista de viajes de Grano</h2>
+  <table class="table table-striped align-middle table-hover table-bordered">
+    <thead>
+      <tr>
+        <th scope="col">Patente</th>
+        <th scope="col">kilómetros recorridos</th>
+        <th scope="col">cantidad de Kilos que llevo en el recorrido</th>
+        <th scope="col">fecha del viaje</th>
+        <th scope="col">Costo del viaje</th>
+        
+      </tr>
+    </thead>
+    <tbody id="tablaViajesGrano"> </tbody>
+  </table>
+</section>
+
+<section class="container-lg mt-5">
+  <h2>Lista de viajes de micropicado</h2>
+  <table class="table table-striped align-middle table-hover table-bordered">
+    <thead>
+      <tr>
+        <th scope="col">Patente</th>
+        <th scope="col">kilómetros recorridos</th>
+        <th scope="col">cantidad de viajes</th>
+        <th scope="col">fecha del viajes</th>
+        <th scope="col">Costo del viaje</th>
+      </tr>
+    </thead>
+    <tbody id="tablaViajesMicropicado"> </tbody>
+  </table>
+</section>
+
+</div>
+</table>
+</section>
+</main>
+</html>

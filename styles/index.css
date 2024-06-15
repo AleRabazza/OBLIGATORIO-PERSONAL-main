@@ -1,0 +1,49 @@
+img {
+  height: 115px;
+  width: 100px;
+
+}
+
+h2{
+  font-family:serif;
+ font-size: 20px;
+}
+
+.container{
+  max-width: 900px;
+}
+
+.container-lg {
+  flex: 1;
+  padding: 20px;
+}
+
+fieldset {
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  padding: 20px;
+}
+
+legend {
+  font-size: 1.2em;
+  margin-bottom: 10px;
+}
+
+label {
+  display: block;
+  margin-top: 10px;
+}
+
+.btn-group {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.d-flex {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.table {
+  width: 100%;
+}
