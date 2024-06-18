@@ -9,12 +9,15 @@
     <link rel="stylesheet" href="styles/index.css">
     <link href="https://getdatepicker.com/4/">
 </head>
-<header class="container-fluid mb-4">
-    <ul class="d-flex flex-row list-unstyled">
-      <li class="pt-3 pl-1 fs-3 flex-start">
-        <img src="images/Rabazza transport1.png" alt="Rabazza transports">
-      </li>
-    </ul>
+<header>
+  <div class="header-container">
+      <div class="logo">
+          <img src="images/Rabazza transport1.png" alt="Rabazza transports">
+      </div>
+      <div class="title">
+          <h1>Rabazza Transports</h1>
+      </div>
+  </div>
 </header>
 
 <main>
@@ -22,34 +25,33 @@
   <table>
     <th>
     <section class="container-lg">
-      <div class="margin-tb-lg">
+      <div class="margin-tb-lg"> 
           <legend id="leyendaFormulario">Agregar camion</legend>
           <input class="form-control" type="hidden" id="camion" name="idCamion" value="0" />
-          <table>
-            <th>
-          <div>
-            <label for="patente">Ingrese la patente:</label>
-            <input class="form-control" type="text" id="patente" name="patente" />
-          </div>
+           
+              <div>
+                <label for="patente">Ingrese la patente:</label>
+                <input id="patente" type="text" placeholder="patente" />
+              </div>
           <div>
             <label for="marca">Ingrese la marca:</label>
-            <input class="form-control" type="text" id="marca" name="marca" />
+            <input class="form-control" type="text" id="marca" name="marca"  placeholder="marca" />
           </div>
           <div>
             <label for="modelo">Ingrese el modelo:</label>
-            <input class="form-control" type="text" id="modelo" name="modelo" />
+            <input class="form-control" type="text" id="modelo" name="modelo"  placeholder="modelo" /> 
           </div>
           <div>
             <label for="anoFabricacion">Ingrese el ano de fabricacion:</label>
-            <input class="form-control" type="number" id="anoFabricacion" name="anoFabricacion" />
+            <input class="form-control" type="number" id="anoFabricacion" name="anoFabricacion" placeholder="ano de fabricacion" /> 
           </div>
           <div>
             <label for="costoKM">Ingrese el costo por kilometo en $:</label>
-            <input class="form-control" type="number" id="costoKM" name="costoKM" />
+            <input class="form-control" type="number" id="costoKM" name="costoKM" placeholder="costo por kilometo" /> 
           </div>
           <div>
             <label for="capacidadk">Ingrese la capacidad de kilos:</label>
-            <input class="form-control" type="number" id="capacidadk" name="capacidadk" />
+            <input class="form-control" type="number" id="capacidadk" name="capacidadk" placeholder="capacidad de kilos" /> 
           </div>
           <div class="btn-group mt-3" role="group">
             <button id="botonCancelar1" class="btn btn-secondary">
@@ -68,9 +70,9 @@
        <div class="margin-tb-lg">
          <legend id="leyendaFormulario">Agregar viaje de grano: </legend>
          <input class="form-control" type="hidden" id="viajesGrano" name="idViajeGrano" value="0" />
-       <div>
-        <label for="patente2">Ingrese la patente del camion:</label>
-        <input class="form-control" type="text" id="patente2" name="patente2" />
+        <div>
+        <label for="patenteSelect">Seleccione la patente:</label>
+        <select id="patenteSelect"> </select>
        </div>
        <div>
          <label for="kilometroGrano">Ingrese la cantidad de kilómetros recorridos:</label>
@@ -100,10 +102,10 @@
     <div class="margin-tb-lg">
         <legend id="leyendaFormulario">Agregar viaje de micropicado: </legend>
         <input class="form-control" type="hidden" id="ViajesMicropicado" name="ViajesMicropicado" value="0" />
-      <div>
-        <label for="patente3">Ingrese la patente del camion:</label>
-        <input class="form-control" type="text" id="patente3" name="patente3" />
-      </div>
+        <div>
+          <label for="patenteSelect1">Seleccione la patente:</label>
+          <select id="patenteSelect1"> </select>
+        </div>
       <div>
         <label for="kilometroMicropicado">Ingrese la cantidad de kilómetros recorridos:</label>
         <input class="form-control" type="number" id="kilometroMicropicado" name="kilometroMicropicado" />

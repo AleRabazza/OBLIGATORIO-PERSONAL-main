@@ -1,15 +1,14 @@
 img {
   height: 115px;
   width: 100px;
-
 }
 
-h2{
-  font-family:serif;
- font-size: 20px;
+h2 {
+  font-family: serif;
+  font-size: 20px;
 }
 
-.container{
+.container {
   max-width: 900px;
 }
 
@@ -46,4 +45,119 @@ label {
 
 .table {
   width: 100%;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+table th, table td {
+  vertical-align: top;
+  padding: 10px;
+  border: 1px solid #ccc;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+form div {
+  margin-bottom: 10px;
+}
+
+form div:last-child {
+  margin-bottom: 0;
+}
+
+button, input, select {
+  z-index: 2;
+  margin: 5px 0;
+  display: inline-block;
+  outline: none;
+  cursor: pointer;
+  font-size: 16px;
+  line-height: 20px;
+  font-weight: 600;
+  border-radius: 8px;
+  padding: 14px 24px;
+  border: none;
+  transition: box-shadow 0.2s ease 0s, transform 0.1s ease 0s;
+  background: linear-gradient(to right, rgb(115, 185, 206) 0%, rgb(100, 188, 214) 50%, rgb(81, 181, 211) 100%);
+  color: #969090;
+}
+
+input {
+  border: 2px solid rgb(3, 67, 92);
+  background: transparent;
+  cursor: text;
+  color: #2c776d;
+}
+
+select {
+  position: relative;
+  height: 48px; /* Aumenta la altura del select box */
+  width: 100%; /* Aumenta el ancho del select box */
+}
+
+
+input::placeholder {
+  color: #CCC;
+}
+
+div {
+  z-index: 3;
+}
+
+label, select, button {
+  display: block;
+  margin: 10px;
+}
+
+
+th {
+  vertical-align: top; 
+}
+
+
+header {
+  background-color: #47aeba;
+  color: white;
+  padding: 10px 0;
+}
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+
+.header-container {
+  display: flex;
+  align-items: left;
+  justify-content: left;
+  gap: 20px; /* Añade espacio entre la imagen y el título */
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.logo img {
+  height: 90px;
+  width: auto;
+}
+
+.title h1 {
+  margin: 0;
+  font-size: 24px;
 }

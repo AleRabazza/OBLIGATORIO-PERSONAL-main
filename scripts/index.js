@@ -38,7 +38,18 @@ function eliminarCamion(idCamion) {
 }
 
 function onClickBotonGuardar() {
-  let inputPatente = document.getElementById("patente");
+
+  let inputPatente = document.getElementById('patente');
+  let selectPatente = document.getElementById("patenteSelect");
+  let selectPatente1 = document.getElementById("patenteSelect1");
+  
+  let nuevoElemento = document.createElement('option');
+  nuevoElemento.value = inputPatente.value;
+  nuevoElemento.innerHTML = inputPatente.value;
+  
+  selectPatente.appendChild(nuevoElemento);
+  selectPatente1.appendChild(nuevoElemento.cloneNode(true));
+
   let inputMarca = document.getElementById("marca");
   let inputModelo = document.getElementById("modelo");
   let inputAnoFabricacion = document.getElementById("anoFabricacion");
@@ -52,14 +63,14 @@ function onClickBotonGuardar() {
   let costoKM = parseFloat(inputCostoKM.value);
   let capacidadKG = parseInt(inputCapacidadKG.value);
 
-  if (patente === "" || marca === "" || modelo === "" || isNaN(anoFabricacion) || isNaN(costoKM) || isNaN(capacidadKG)) {
+  if (patente === ""|| marca === "" || modelo === "" || isNaN(anoFabricacion) || isNaN(costoKM) || isNaN(capacidadKG)) {
     alert("Por favor, ingrese todos los campos.");
     return;
+ 
   }
+  agregarCamion({patente, marca, modelo, anoFabricacion, costoKM, capacidadKG });
 
-  agregarCamion({ patente, marca, modelo, anoFabricacion, costoKM, capacidadKG });
-
-  inputPatente.value = "";
+  document.getElementById("patente").value = "";
   inputMarca.value = "";
   inputModelo.value = "";
   inputAnoFabricacion.value = "";
@@ -189,24 +200,24 @@ function ultimoIdViajesGrano() {
 }
 
 function onClickBotonIngresar() {
-  const inputpatente2 = document.getElementById("patente2");
+   selectPatente = document.getElementById("patenteSelect");
   const inputkilometroGrano = document.getElementById("kilometroGrano");
   const inputkilosGrano = document.getElementById("kilosGrano");
   const inputfecha = document.getElementById("fecha");
   
-  const patente2 = inputpatente2.value;
+  let patente = selectPatente.value;
   const kilometroGrano = inputkilometroGrano.value;
   const kilosGrano = inputkilosGrano.value;
   const fecha = inputfecha.value;
 
-   if (patente2 === "" || kilometroGrano === "" || kilosGrano === "" || fecha === "" ) {
+   if (patente === "" || kilometroGrano === "" || kilosGrano === "" || fecha === "" ) {
     alert("Por favor, ingrese todos los campos.");
     return;
   }
   let precioGrano = calculoPrecioGrano(kilometroGrano, kilosGrano);
-  agregarViajeGrano({patente2, kilometroGrano, kilosGrano, fecha, precio: precioGrano});
+  agregarViajeGrano({patente, kilometroGrano, kilosGrano, fecha, precio: precioGrano});
 
-  inputpatente2.value = "";
+  document.getElementById("patenteSelect").value = "";
   inputkilometroGrano.value = "";
   inputkilosGrano.value = "";
   inputfecha.value = "";
@@ -219,9 +230,9 @@ function renderizarViajeGrano(viajesGrano) {
   const fila = document.createElement("tr");
   fila.dataset.idViajesGrano = viajesGrano.id;
 
-  const celdapatente2 = document.createElement("td");
-  celdapatente2.innerText = viajesGrano.patente2;
-  fila.appendChild(celdapatente2);
+  const celdaPatente = document.createElement("td");
+  celdaPatente.innerText = viajesGrano.patente;
+  fila.appendChild(celdaPatente);
 
   const celdakilometroGrano = document.createElement("td");
   celdakilometroGrano.innerText = viajesGrano.kilometroGrano;
@@ -255,7 +266,7 @@ function renderizarViajesGrano() {
 function documentOnLoad2() {
   console.log("El DOM ha sido cargado");
     document.getElementById("botonCancelar2").addEventListener("click", () => {
-    document.getElementById("patente2").value = "";
+    document.getElementById("patenteSelect").value = "";
     document.getElementById("kilometroGrano").value = "";
     document.getElementById("kilosGrano").value = "";
     document.getElementById("fecha").value = "";
@@ -304,25 +315,25 @@ function ultimoIdViajesMicropicado() {
 }
 
 function onClickBotonIngresar2() {
-  const inputpatente3 = document.getElementById("patente3");
+  let selectPatente1 = document.getElementById("patenteSelect1");
   const inputkilometroMicropicado = document.getElementById("kilometroMicropicado");
   const inputcantViajesMicropicado = document.getElementById("cantViajesMicropicado");
   const inputfecha2 = document.getElementById("fecha2");
   
-  const patente3 = inputpatente3.value;
+  let patente = selectPatente1.value;
   const kilometroMicropicado = inputkilometroMicropicado.value;
   const cantViajesMicropicado = inputcantViajesMicropicado.value;
   const fecha2 = inputfecha2.value;
 
-   if (patente3 === "" || kilometroMicropicado === "" || cantViajesMicropicado === "" || fecha2 === "") {
+   if (patente === "" || kilometroMicropicado === "" || cantViajesMicropicado === "" || fecha2 === "") {
     alert("Por favor, ingrese todos los campos.");
     return;
   }
   let precioMicropicado = calculoPrecioMicropicado(kilometroMicropicado, cantViajesMicropicado);
 
-  agregarViajesMicropicado({patente3, kilometroMicropicado, cantViajesMicropicado, fecha2, precio:precioMicropicado});
+  agregarViajesMicropicado({patente, kilometroMicropicado, cantViajesMicropicado, fecha2, precio:precioMicropicado});
 
-  inputpatente3.value = "";
+  document.getElementById("patenteSelect1").value = "";
   inputkilometroMicropicado.value = "";
   inputcantViajesMicropicado.value = "";
   inputfecha2.value = "";
@@ -335,9 +346,9 @@ function renderizarViajeMicropicado(viajesMicropicado) {
   const fila = document.createElement("tr");
   fila.dataset.idViajesMicropicado = viajesMicropicado.id;
 
-  const celdapatente3 = document.createElement("td");
-  celdapatente3.innerText = viajesMicropicado.patente3;
-  fila.appendChild(celdapatente3);
+  const celdaselectpatentes = document.createElement("td");
+  celdaselectpatentes.innerText = viajesMicropicado.patente;
+  fila.appendChild(celdaselectpatentes);
 
   const celdakilometroMicropicado = document.createElement("td");
   celdakilometroMicropicado.innerText = viajesMicropicado.kilometroMicropicado;
@@ -371,7 +382,7 @@ function renderizarViajesMicropicado() {
 function documentOnLoad3 () {
   console.log("El DOM ha sido cargado");
     document.getElementById("botonCancelar3").addEventListener("click", () => {
-    document.getElementById("patente3").value = "";
+    document.getElementById("patenteSelect1").value = "";
     document.getElementById("kilometroMicropicado").value = "";
     document.getElementById("cantViajesMicropicado").value = "";
     document.getElementById("fecha2").value = "";
@@ -472,70 +483,4 @@ function calculoPrecioMicropicado(cantidadDeKm, cantidadViajes) {
 
   return totalPrecioViajes;
 }
-// function calculoPrecioGrano(){
-//   let kilometrosRecorridos = getElementById(kilometroGrano);
-//   let cantidadDeK = getElementById(kilosGrano);
-//   let preciokilometro = 0;
-
-//     if(kilometrosRecorridos >= 1 && kilometrosRecorridos <= 5){
-//         preciokilometro = 6.00;
-//     } else if (kilometrosRecorridos >= 6 && kilometrosRecorridos <= 10){
-//         preciokilometro = 7.50;
-//     } else if (kilometrosRecorridos >= 11 && kilometrosRecorridos <= 15){
-//         preciokilometro = 8.20;
-//     } else if (kilometrosRecorridos >= 16 && kilometrosRecorridos <= 20){
-//         preciokilometro = 9.00;
-//     } else if (kilometrosRecorridos >= 21 && kilometrosRecorridos <= 25){
-//         preciokilometro = 9.50;
-//     } else if (kilometrosRecorridos >= 26 && kilometrosRecorridos <= 30){
-//         preciokilometro = 10.00;
-//     } else if (kilometrosRecorridos >= 31 && kilometrosRecorridos <= 35){
-//         preciokilometro = 10.60;
-//     } else if (kilometrosRecorridos >= 36 && kilometrosRecorridos <= 40){
-//         preciokilometro = 11.00;
-//     } else if (kilometrosRecorridos >= 41 && kilometrosRecorridos <= 45){
-//         preciokilometro = 11.50;
-//     } else if (kilometrosRecorridos >= 46 && kilometrosRecorridos <= 50){
-//         preciokilometro = 11.80;
-//     } else if (kilometrosRecorridos >= 51 && kilometrosRecorridos <= 60){
-//         preciokilometro = 12.80;
-//     } else if (kilometrosRecorridos >= 61 && kilometrosRecorridos <= 70){
-//         preciokilometro = 13.80;
-//     } else if (kilometrosRecorridos >= 71 && kilometrosRecorridos <= 80){
-//         preciokilometro = 14.45;
-//     } else if (kilometrosRecorridos >= 81 && kilometrosRecorridos <= 90){
-//         preciokilometro = 15.65;
-//     } else if (kilometrosRecorridos >= 91 && kilometrosRecorridos <= 100){
-//         preciokilometro = 16.65;
-//     } else if (kilometrosRecorridos >= 101 && kilometrosRecorridos <= 110){
-//         preciokilometro = 17.80;
-//     } else if (kilometrosRecorridos >= 111 && kilometrosRecorridos <= 120){
-//         preciokilometro = 18.75;
-//     } else if (kilometrosRecorridos >= 121 && kilometrosRecorridos <= 130){
-//         preciokilometro = 20.00;
-//     } else if (kilometrosRecorridos >= 131 && kilometrosRecorridos <= 140){
-//         preciokilometro = 20.75;
-//     } else if (kilometrosRecorridos >= 141 && kilometrosRecorridos <= 150){
-//         preciokilometro = 22.00;
-//     } else if (kilometrosRecorridos >= 151 && kilometrosRecorridos <= 160){
-//         preciokilometro = 22.85;
-//     } else if (kilometrosRecorridos >= 161 && kilometrosRecorridos <= 170){
-//         preciokilometro = 24.15;
-//     } else if (kilometrosRecorridos >= 171 && kilometrosRecorridos <= 180){
-//         preciokilometro = 25.00;
-//     } else if (kilometrosRecorridos >= 181 && kilometrosRecorridos <= 190){
-//         preciokilometro = 26.00;
-//     } else if (kilometrosRecorridos >= 191 && kilometrosRecorridos <= 200){
-//         preciokilometro = 27.00;
-//     }
-//     let cantidadDeTT = cantidadDeK * 0.001
-//     let precioTOTALdeTT = preciokilometro * cantidadDeTT;
-//     alert(`El valor de 1 TT en ${kilometrosRecorridos}Km es: $${preciokilometro.toFixed(2)}`);
-//     alert(`El precio total por ${cantidadDeTT}TT es: $${precioTOTALdeTT.toFixed(2)}`);
-//     alert("--------------------------------------------------------------------------------");
-     
-//     return precioTOTALdeTT;
-// }
-
-
 
