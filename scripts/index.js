@@ -173,7 +173,7 @@ function onClickBotonEliminar(idCamion) {
 }
 
 //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-const VIAJEGRANO = [];
+let VIAJEGRANO = [];
 
 function storageGuardarViajesGrano() {
   localStorage.setItem("viajesGrano", JSON.stringify(VIAJEGRANO));
@@ -225,6 +225,70 @@ function onClickBotonIngresar() {
   renderizarViajesGrano();
 }
 
+function calculoPrecioGrano(kilometrosRecorridos, cantidadDeK) {
+  let preciokilometro = 0;
+
+ if(kilometrosRecorridos >= 1 && kilometrosRecorridos <= 5){
+     preciokilometro = 6.00;
+  }else if (kilometrosRecorridos >= 6 && kilometrosRecorridos <= 10){
+    preciokilometro = 7.50;
+  } else if (kilometrosRecorridos >= 11 && kilometrosRecorridos <= 15){
+    preciokilometro = 8.20;
+  } else if (kilometrosRecorridos >= 16 && kilometrosRecorridos <= 20){
+   preciokilometro = 9.00;
+  } else if (kilometrosRecorridos >= 21 && kilometrosRecorridos <= 25){
+     preciokilometro = 9.50;
+  } else if (kilometrosRecorridos >= 26 && kilometrosRecorridos <= 30){
+    preciokilometro = 10.00;
+  } else if (kilometrosRecorridos >= 31 && kilometrosRecorridos <= 35){
+    preciokilometro = 10.60;
+  } else if (kilometrosRecorridos >= 36 && kilometrosRecorridos <= 40){
+    preciokilometro = 11.00;
+  } else if (kilometrosRecorridos >= 41 && kilometrosRecorridos <= 45){
+    preciokilometro = 11.50;
+  } else if (kilometrosRecorridos >= 46 && kilometrosRecorridos <= 50){
+    preciokilometro = 11.80;
+  } else if (kilometrosRecorridos >= 51 && kilometrosRecorridos <= 60){
+    preciokilometro = 12.80;
+  } else if (kilometrosRecorridos >= 61 && kilometrosRecorridos <= 70){
+    preciokilometro = 13.80;
+  } else if (kilometrosRecorridos >= 71 && kilometrosRecorridos <= 80){
+    preciokilometro = 14.45;
+  } else if (kilometrosRecorridos >= 81 && kilometrosRecorridos <= 90){
+    preciokilometro = 15.65;
+  } else if (kilometrosRecorridos >= 91 && kilometrosRecorridos <= 100){
+    preciokilometro = 16.65;
+  } else if (kilometrosRecorridos >= 101 && kilometrosRecorridos <= 110){
+    preciokilometro = 17.80;
+  } else if (kilometrosRecorridos >= 111 && kilometrosRecorridos <= 120){
+    preciokilometro = 18.75;
+  } else if (kilometrosRecorridos >= 121 && kilometrosRecorridos <= 130){
+    preciokilometro = 20.00;
+  } else if (kilometrosRecorridos >= 131 && kilometrosRecorridos <= 140){
+    preciokilometro = 20.75;
+  } else if (kilometrosRecorridos >= 141 && kilometrosRecorridos <= 150){
+    preciokilometro = 22.00;
+  } else if (kilometrosRecorridos >= 151 && kilometrosRecorridos <= 160){
+    preciokilometro = 22.85;
+  } else if (kilometrosRecorridos >= 161 && kilometrosRecorridos <= 170){
+    preciokilometro = 24.15;
+  } else if (kilometrosRecorridos >= 171 && kilometrosRecorridos <= 180){
+    preciokilometro = 25.00;
+  } else if (kilometrosRecorridos >= 181 && kilometrosRecorridos <= 190){
+    preciokilometro = 26.00;
+  } else if (kilometrosRecorridos >= 191 && kilometrosRecorridos <= 200){
+    preciokilometro = 27.00;
+  }
+
+  let cantidadDeTT = cantidadDeK * 0.001;
+  let precioTOTALdeTT = preciokilometro * cantidadDeTT;
+
+  alert(`El valor de 1 TT en ${kilometrosRecorridos} Km es: $${preciokilometro.toFixed(2)}`);
+  alert(`El precio total por ${cantidadDeTT} TT es: $${precioTOTALdeTT.toFixed(2)}`);
+  
+  return precioTOTALdeTT;
+}
+
 
 function renderizarViajeGrano(viajesGrano) {
   const fila = document.createElement("tr");
@@ -273,22 +337,14 @@ function documentOnLoad2() {
   });
   document.getElementById("botonIngresar2").addEventListener("click", onClickBotonIngresar);
 
-  let viajesDeGranoDeStorage = storageLeerViajesGrano();
-
-  if (viajesDeGranoDeStorage === 0) {
-    storageGuardarViajesGrano();
-  } else {
-    for (let viajesGrano of VIAJEGRANO) {
-      VIAJEGRANO.push(viajesGrano);
-    }
-  }
+  VIAJEGRANO = storageLeerViajesGrano();
   renderizarViajesGrano();
 }
 
 
 //------------------------------------------------------------------------------------------------------------------------------------- 
 
-const VIAJESMICROPICADO= [];
+let VIAJESMICROPICADO = [];
 
 function storageGuardarViajesMicropicado() {
   localStorage.setItem("viajesMicropicado", JSON.stringify(VIAJESMICROPICADO));
@@ -389,80 +445,11 @@ function documentOnLoad3 () {
   });
 
   document.getElementById("botonIngresar3").addEventListener("click", onClickBotonIngresar2);
-  let viajesDeMicropicadoDeStorage = storageLeerViajesMicropicado();
-  if (viajesDeMicropicadoDeStorage === 0) {
-    storageGuardarViajesMicropicado();
-  } else {
-    for (let viajesMicropicado of VIAJESMICROPICADO) {
-      VIAJESMICROPICADO.push(viajesMicropicado);
-    }
-  }
+   VIAJESMICROPICADO = storageLeerViajesMicropicado();
+
   renderizarViajesMicropicado();
 }
 
-function calculoPrecioGrano(kilometrosRecorridos, cantidadDeK) {
-  let preciokilometro = 0;
-
- if(kilometrosRecorridos >= 1 && kilometrosRecorridos <= 5){
-     preciokilometro = 6.00;
-  }else if (kilometrosRecorridos >= 6 && kilometrosRecorridos <= 10){
-    preciokilometro = 7.50;
-  } else if (kilometrosRecorridos >= 11 && kilometrosRecorridos <= 15){
-    preciokilometro = 8.20;
-  } else if (kilometrosRecorridos >= 16 && kilometrosRecorridos <= 20){
-   preciokilometro = 9.00;
-  } else if (kilometrosRecorridos >= 21 && kilometrosRecorridos <= 25){
-     preciokilometro = 9.50;
-  } else if (kilometrosRecorridos >= 26 && kilometrosRecorridos <= 30){
-    preciokilometro = 10.00;
-  } else if (kilometrosRecorridos >= 31 && kilometrosRecorridos <= 35){
-    preciokilometro = 10.60;
-  } else if (kilometrosRecorridos >= 36 && kilometrosRecorridos <= 40){
-    preciokilometro = 11.00;
-  } else if (kilometrosRecorridos >= 41 && kilometrosRecorridos <= 45){
-    preciokilometro = 11.50;
-  } else if (kilometrosRecorridos >= 46 && kilometrosRecorridos <= 50){
-    preciokilometro = 11.80;
-  } else if (kilometrosRecorridos >= 51 && kilometrosRecorridos <= 60){
-    preciokilometro = 12.80;
-  } else if (kilometrosRecorridos >= 61 && kilometrosRecorridos <= 70){
-    preciokilometro = 13.80;
-  } else if (kilometrosRecorridos >= 71 && kilometrosRecorridos <= 80){
-    preciokilometro = 14.45;
-  } else if (kilometrosRecorridos >= 81 && kilometrosRecorridos <= 90){
-    preciokilometro = 15.65;
-  } else if (kilometrosRecorridos >= 91 && kilometrosRecorridos <= 100){
-    preciokilometro = 16.65;
-  } else if (kilometrosRecorridos >= 101 && kilometrosRecorridos <= 110){
-    preciokilometro = 17.80;
-  } else if (kilometrosRecorridos >= 111 && kilometrosRecorridos <= 120){
-    preciokilometro = 18.75;
-  } else if (kilometrosRecorridos >= 121 && kilometrosRecorridos <= 130){
-    preciokilometro = 20.00;
-  } else if (kilometrosRecorridos >= 131 && kilometrosRecorridos <= 140){
-    preciokilometro = 20.75;
-  } else if (kilometrosRecorridos >= 141 && kilometrosRecorridos <= 150){
-    preciokilometro = 22.00;
-  } else if (kilometrosRecorridos >= 151 && kilometrosRecorridos <= 160){
-    preciokilometro = 22.85;
-  } else if (kilometrosRecorridos >= 161 && kilometrosRecorridos <= 170){
-    preciokilometro = 24.15;
-  } else if (kilometrosRecorridos >= 171 && kilometrosRecorridos <= 180){
-    preciokilometro = 25.00;
-  } else if (kilometrosRecorridos >= 181 && kilometrosRecorridos <= 190){
-    preciokilometro = 26.00;
-  } else if (kilometrosRecorridos >= 191 && kilometrosRecorridos <= 200){
-    preciokilometro = 27.00;
-  }
-
-  let cantidadDeTT = cantidadDeK * 0.001;
-  let precioTOTALdeTT = preciokilometro * cantidadDeTT;
-
-  alert(`El valor de 1 TT en ${kilometrosRecorridos} Km es: $${preciokilometro.toFixed(2)}`);
-  alert(`El precio total por ${cantidadDeTT} TT es: $${precioTOTALdeTT.toFixed(2)}`);
-  
-  return precioTOTALdeTT;
-}
 
 function calculoPrecioMicropicado(cantidadDeKm, cantidadViajes) {
   let precio = 0;
